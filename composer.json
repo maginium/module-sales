@@ -1,0 +1,103 @@
+{
+  "name": "maginium/module-sales",
+  "description": "Maginium Sales module for Magento 2. Streamlines sales operations by providing robust tools for order, invoice, shipment, and credit memo management, along with advanced tracking and reporting features.",
+  "type": "magento2-module",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Maginium",
+      "role": "Technical Support",
+      "email": "support@maginium.com",
+      "homepage": "https://www.maginium.com"
+    }
+  ],
+  "homepage": "https://www.maginium.com",
+  "support": {
+    "issues": "https://www.maginium.com/issues",
+    "source": "https://github.com/maginium/module-sales",
+    "email": "support@maginium.com",
+    "docs": "https://docs.maginium.com/sales"
+  },
+  "keywords": [
+    "sales management",
+    "order processing",
+    "invoice management",
+    "shipment tracking",
+    "credit memo",
+    "reporting",
+    "magento 2",
+    "maginium extensions",
+    "ecommerce solutions",
+    "sales tracking",
+    "elastic indexing"
+  ],
+  "prefer-stable": true,
+  "minimum-stability": "stable",
+  "config": {
+    "optimize-autoloader": true,
+    "preferred-install": "dist",
+    "sort-packages": true
+  },
+  "require": {
+    "php": ">=8.2",
+    "magento/module-sales": "*",
+    "maginium/module-framework": "*",
+    "maginium/module-foundation": "*",
+    "amasty/module-cash-on-delivery": "*",
+    "maginium/module-elastic-indexer": "*"
+  },
+  "require-dev": {
+    "mockery/mockery": "^1.5",
+    "phpunit/phpunit": "^10.3",
+    "phpstan/phpstan": "^1.10",
+    "friendsofphp/php-cs-fixer": "^3.19"
+  },
+  "autoload": {
+    "files": [
+      "src/Core/registration.php",
+      "src/Order/Api/registration.php",
+      "src/Order/Core/registration.php",
+      "src/Order/Stats/registration.php",
+      "src/Order/ElasticIndexer/registration.php"
+    ],
+    "psr-4": {
+      "Maginium\\Sales\\": "src/Core",
+      "Maginium\\Order\\": "src/Order/Core",
+      "Maginium\\OrderApi\\": "src/Order/Api",
+      "Maginium\\OrderStats\\": "src/Order/Stats",
+      "Maginium\\OrderElasticIndexer\\": "src/Order/ElasticIndexer"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Maginium\\Sales\\Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "post-install-cmd": [],
+    "post-update-cmd": [],
+    "lint": [],
+    "test": [
+      "phpunit --stop-on-failure"
+    ],
+    "bench": [
+      "phpbench run tests\\Benchmark\\ --report=default"
+    ]
+  },
+  "extra": {
+    "magento-version": ">=2.4",
+    "classmap-authoritative": true,
+    "patches": {
+      "magento/framework": {}
+    }
+  },
+  "archive": {
+    "exclude": [
+      "/tests",
+      "/.github",
+      "/.gitignore",
+      "/composer.lock",
+      "/phpunit.xml"
+    ]
+  }
+}

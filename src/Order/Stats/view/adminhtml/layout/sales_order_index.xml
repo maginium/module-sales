@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+<page
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd"
+>
+    <!-- Includes the "styles" handle to add global styles or dependencies -->
+    <update handle="styles" />
+
+    <body>
+        <!-- Define a block within the "content" reference container -->
+        <referenceContainer name="content">
+            <!-- Create a new DataBar block (QuickDataBar) before any existing elements -->
+            <block before="-" class="Mirasvit\Core\Ui\QuickDataBar\DataBar">
+                <!-- Add block for displaying search data in the quick data bar -->
+                <block class="Mirasvit\SearchReport\Ui\QuickDataBar\SearchesDataBlock" />
+
+                <!-- Add block for displaying session data in the quick data bar -->
+                <block class="Mirasvit\SearchReport\Ui\QuickDataBar\SessionsDataBlock" />
+
+                <!-- Add block for displaying engagement data in the quick data bar -->
+                <block class="Mirasvit\SearchReport\Ui\QuickDataBar\EngagementDataBlock" />
+
+                <!-- Add block for displaying misspells data in the quick data bar -->
+                <block class="Mirasvit\SearchReport\Ui\QuickDataBar\MisspellsDataBlock" />
+            </block>
+        </referenceContainer>
+    </body>
+</page>

@@ -1,0 +1,48 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- Define a preference for the Magento\Sales\Model\Order, specifying the custom Order class implementation. -->
+    <preference for="Magento\Sales\Model\Order" type="Maginium\Order\Models\Order" />
+
+    <!-- Define a preference for the OrderInterface, specifying the custom Order class implementation. -->
+    <preference for="Maginium\Order\Interfaces\Data\OrderInterface" type="Maginium\Order\Models\Order" />
+
+    <!-- Define a preference for the OrderInterface, specifying the custom Order class implementation. -->
+    <preference for="Maginium\Order\Interfaces\Data\OrderInterface" type="Maginium\Order\Models\Order" />
+
+    <!-- Define a preference for the OrderRepositoryInterface, specifying the custom OrderRepository class implementation. -->
+    <preference for="Maginium\Order\Interfaces\Repositories\OrderRepositoryInterface" type="Maginium\Order\Repositories\OrderRepository" />
+
+    <!-- Define a preference for the OrderServiceInterface, specifying the custom OrderService class implementation. -->
+    <preference for="Maginium\Order\Interfaces\Services\OrderServiceInterface" type="Maginium\Order\Services\OrderService" />
+
+    <!-- Define metadata for the OrderInterface model -->
+    <type name="Magento\Framework\EntityManager\MetadataPool">
+        <arguments>
+            <argument xsi:type="array" name="metadata">
+                <item xsi:type="array" name="Maginium\Order\Interfaces\Data\OrderInterface">
+                    <item xsi:type="const" name="entityTableName">Maginium\Order\Interfaces\Data\OrderInterface::TABLE_NAME</item>
+                    <item xsi:type="const" name="identifierField">Maginium\Order\Interfaces\Data\OrderInterface::ID</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!-- Define a hydrator for the OrderInterface model -->
+    <type name="Magento\Framework\EntityManager\HydratorPool">
+        <arguments>
+            <argument xsi:type="array" name="hydrators">
+                <item
+                    xsi:type="string"
+                    name="Maginium\Order\Interfaces\Data\OrderInterface"
+                >Magento\Framework\EntityManager\AbstractModelHydrator</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!-- Datasources resolver -->
+    <type name="Maginium\Order\Models\Order">
+        <plugin name="order_model_resolver" sortOrder="1" type="Maginium\Order\Models\DataSourceResolver" />
+    </type>
+
+    <virtualType name="Maginium\Order\Models\DataSourceResolver" type="Maginium\Framework\Database\DataSourceResolver" />
+</config>

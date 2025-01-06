@@ -1,0 +1,126 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../Config/etc/system_file.xsd">
+    <system>
+        <!-- Define a custom tab in the admin configuration -->
+        <tab class="order-tab" id="order" sortOrder="70" translate="label">
+            <!-- Label for the Orders tab -->
+            <label>Orders</label>
+        </tab>
+
+        <!-- Add a section for general order settings -->
+        <section id="order" sortOrder="10">
+            <!-- Label for the general settings section -->
+            <label>General</label>
+
+            <!-- Define a hidden group for online orders -->
+            <group id="online_orders" showInDefault="0" showInStore="0" showInWebsite="0" />
+
+            <!-- Define a group for order avatar settings -->
+            <group id="avatar" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="100" translate="label" type="text">
+                <!-- Label for the avatar group -->
+                <label>Order Avatar</label>
+
+                <!-- Define a field for font color configuration -->
+                <field
+                    canRestore="1"
+                    id="font_color"
+                    showInDefault="1"
+                    showInStore="1"
+                    showInWebsite="1"
+                    sortOrder="10"
+                    translate="label"
+                    type="text"
+                >
+                    <!-- Label for font color field -->
+                    <label>Font Color</label>
+
+                    <!-- Validation rules for font color -->
+                    <validate>color {required:false, hash:true}</validate>
+
+                    <!-- Frontend model for font color -->
+                    <frontend_model>Maginium\Foundation\Models\Config\Frontend\Color</frontend_model>
+                </field>
+
+                <!-- Define a field for background color configuration -->
+
+                <field
+                    canRestore="1"
+                    id="background_color"
+                    showInDefault="1"
+                    showInStore="1"
+                    showInWebsite="1"
+                    sortOrder="20"
+                    translate="label"
+                    type="text"
+                >
+                    <!-- Label for background color field -->
+                    <label>Background Color</label>
+
+                    <!-- Validation rules for background color -->
+                    <validate>color {required:false, hash:true}</validate>
+
+                    <!-- Frontend model for background color -->
+                    <frontend_model>Maginium\Foundation\Models\Config\Frontend\Color</frontend_model>
+                </field>
+
+                <!-- Define a field for avatar size configuration -->
+                <field canRestore="1" id="size" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="30" translate="label" type="text">
+                    <!-- Label for avatar size field -->
+                    <label>Size</label>
+
+                    <!-- Comment explaining size value format -->
+                    <comment>Add size in pixels. e.g. 100</comment>
+                </field>
+            </group>
+
+            <!-- Define a group for registration options -->
+            <group id="registration_options" showInDefault="10" showInStore="1" showInWebsite="1" sortOrder="95" translate="label">
+                <!-- Label for registration options group -->
+                <label>Registration Options</label>
+
+                <!-- Define a field for showing prefix -->
+                <field canRestore="1" id="prefix_show" showInDefault="1" showInWebsite="1" sortOrder="20" translate="label comment" type="select">
+                    <!-- Label for showing prefix field -->
+                    <label>Show Prefix</label>
+
+                    <!-- Source model for prefix field -->
+                    <source_model>Magento\Config\Model\Config\Source\Nooptreq</source_model>
+
+                    <!-- Backend model for prefix field -->
+                    <backend_model>Magento\Order\Model\Config\Backend\Show\Address</backend_model>
+
+                    <!-- Description of prefix field -->
+                    <comment>The title that goes before name (Mr., Mrs., etc.)</comment>
+                </field>
+
+                <!-- Define a field for prefix dropdown options -->
+                <field canRestore="1" id="prefix_options" showInDefault="1" showInWebsite="1" sortOrder="30" translate="label comment">
+                    <!-- Label for prefix options field -->
+                    <label>Prefix Dropdown Options</label>
+                    <comment>
+                        <!-- Description of prefix options -->
+                        <![CDATA[Semicolon (;) separated values.<br/>Leave empty for open text field.]]>
+                    </comment>
+                </field>
+
+                <!-- Define a field for showing middle name -->
+                <field canRestore="1" id="middlename_show" showInDefault="1" showInWebsite="1" sortOrder="40" translate="label comment" type="select">
+                    <!-- Label for middle name field -->
+                    <label>Show Middle Name (initial)</label>
+
+                    <!-- Frontend class for middle name field -->
+                    <frontend_class>on-off-trigger</frontend_class>
+
+                    <!-- Source model for middle name field -->
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+
+                    <!-- Comment explaining the middle name field -->
+                    <comment>Always optional.</comment>
+
+                    <!-- Backend model for middle name field -->
+                    <backend_model>Magento\Order\Model\Config\Backend\Show\Address</backend_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

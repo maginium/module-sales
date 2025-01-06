@@ -1,0 +1,44 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <!-- Event: order_load_after -->
+    <event name="order_load_after">
+        <!-- Subsciber for the "order_load_after" event -->
+        <observer instance="Maginium\OrderElasticIndexer\Observers\OrderIndexer" name="order_load_after" />
+    </event>
+
+    <!-- Event: order_save_after -->
+    <event name="order_save_after">
+        <!-- Subsciber for the "order_save_after" event -->
+        <observer instance="Maginium\OrderElasticIndexer\Observers\OrderIndexer" name="order_save_after" />
+    </event>
+
+    <!-- Event: order_delete_after -->
+    <event name="order_delete_after">
+        <!-- Subsciber for the "order_delete_after" event -->
+        <observer instance="Maginium\OrderElasticIndexer\Observers\OrderIndexer" name="order_delete_after" />
+    </event>
+
+    <!-- Event: order_mass_delete_after -->
+    <event name="order_mass_delete_after">
+        <!-- Subsciber for the "order_mass_delete_after" event -->
+        <observer instance="Maginium\OrderElasticIndexer\Observers\OrderIndexer" name="order_mass_delete_after" />
+    </event>
+
+    <!-- Event: order_duplicate -->
+    <event name="order_duplicate">
+        <!-- Subsciber for the "order_duplicate" event -->
+        <observer instance="Maginium\OrderElasticIndexer\Observers\OrderIndexer" name="order_duplicate" />
+    </event>
+
+    <!-- Event: order_mass_update_status_after -->
+    <event name="order_mass_update_status_after">
+        <!-- Subsciber for the "order_mass_update_status_after" event -->
+        <observer instance="Maginium\OrderElasticIndexer\Observers\OrderIndexer" name="order_mass_update_status_after" />
+    </event>
+
+    <!-- Event: order_mass_duplicate_after -->
+    <event name="order_mass_duplicate_after">
+        <!-- Subsciber for the "order_mass_duplicate_after" event -->
+        <observer instance="Maginium\OrderElasticIndexer\Observers\OrderIndexer" name="order_mass_duplicate_after" />
+    </event>
+</config>

@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Mview/etc/mview.xsd">
+    <!-- Defines the view for the 'orders' indexer, linking it to the Fulltext model class. -->
+    <view class="Maginium\OrderElasticIndexer\Models\Indexer\Fulltext" group="indexer" id="orders">
+        <!-- Defines the subscriptions for the 'orders' indexer. -->
+        <subscriptions>
+            <!-- Subscribes to the 'orders' table, using the 'order_id' column to track changes. -->
+            <table entity_column="order_id" name="orders" />
+        </subscriptions>
+    </view>
+</config>

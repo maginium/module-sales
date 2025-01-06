@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <order>
+            <registration_options>
+                <dob_show>0</dob_show>
+                <gender_show>0</gender_show>
+                <prefix_show>0</prefix_show>
+                <suffix_show>0</suffix_show>
+                <telephone_show>req</telephone_show>
+                <middlename_show>req</middlename_show>
+                <prefix_options>Mr.,Mrs.</prefix_options>
+                <suffix_options>Jr., Sr.</suffix_options>
+            </registration_options>
+        </order>
+    </default>
+</config>

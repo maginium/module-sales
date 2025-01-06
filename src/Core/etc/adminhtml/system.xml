@@ -1,0 +1,59 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <!-- Define a tab under the "Sales" category. -->
+        <tab class="sales-tab" id="sales" sortOrder="40" translate="label">
+            <!-- The label for the sales tab in the admin panel -->
+            <label>Sales</label>
+        </tab>
+
+        <!-- Define the "sales" section within the admin settings. -->
+        <section id="sales" sortOrder="200">
+            <!-- The label for the "General" section within sales -->
+            <label>General</label>
+
+            <!-- Define groups within the "sales" section. These groups will contain different fields for configuration -->
+            <group id="msrp" showInDefault="0" showInStore="0" showInWebsite="0" />
+            <group id="orders" showInDefault="0" showInStore="0" showInWebsite="0" />
+            <group id="dashboard" showInDefault="0" showInStore="0" showInWebsite="0" />
+            <group id="gift_options" showInDefault="0" showInStore="0" showInWebsite="0" />
+            <group id="instant_purchase" showInDefault="0" showInStore="0" showInWebsite="0" />
+            <group id="zerograndtotal_creditmemo" showInDefault="0" showInStore="0" showInWebsite="0" />
+
+            <!-- The "general" group which holds the fields for general configuration -->
+            <group id="general">
+                <!-- A field to hide customer IP address, can be used to configure if customer IPs should be hidden -->
+                <field id="hide_customer_ip" showInDefault="0" showInStore="0" showInWebsite="0" />
+            </group>
+
+            <!-- The "identity" group for managing company/brand identity settings -->
+            <group id="identity">
+                <!-- A field to restore default address if necessary, shows in the admin panel -->
+                <field canRestore="1" id="address" showInDefault="0" showInStore="0" showInWebsite="0" />
+            </group>
+        </section>
+
+        <!-- Define additional sections under the "sales" section, for other configuration options -->
+        <section id="tax" sortOrder="201" />
+        <section id="checkout" sortOrder="203" />
+        <section id="sales_email" sortOrder="204" />
+
+        <!-- Define custom sections for order-related settings -->
+        <section id="order_customer_detector" showInDefault="0" showInStore="0" showInWebsite="0" sortOrder="300">
+            <!-- Assign the "sales" tab for this section -->
+            <tab>sales</tab>
+        </section>
+        <section id="order_product_links" showInDefault="0" showInStore="0" showInWebsite="0" sortOrder="350">
+            <!-- Assign the "sales" tab for this section -->
+            <tab>sales</tab>
+        </section>
+
+        <!-- Define the "missingorders" section -->
+        <section id="missingorders" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="130" translate="label">
+            <!-- The label for the "Missing Orders" section -->
+            <label>Missing Orders</label>
+            <!-- Assign the "sales" tab for this section -->
+            <tab>sales</tab>
+        </section>
+    </system>
+</config>
