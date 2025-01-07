@@ -15,7 +15,7 @@ use Maginium\Framework\Database\Interfaces\Data\ModelInterface;
  * It includes table name, event prefix, and field identifiers that are commonly used across models and other parts
  * of the application related to the order data.
  */
-interface OrderInterface extends /* HasMetadataInterface, */ ModelInterface
+interface OrderInterface extends ModelInterface
 {
     /**
      * Entity table_name identifier.

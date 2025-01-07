@@ -6,7 +6,7 @@ namespace Maginium\OrderElasticIndexer\Models;
 
 use Maginium\Foundation\Enums\DataType;
 use Maginium\Framework\Database\EloquentModel;
-use Maginium\Framework\Database\Enums\Searcher;
+use Maginium\Framework\Database\Enums\SearcherEngines;
 use Maginium\Framework\Elasticsearch\Eloquent\Model;
 use Maginium\Order\Interfaces\Data\OrderInterface;
 use Maginium\Order\Models\Attributes\OrderAttributes;
@@ -20,7 +20,7 @@ use Maginium\OrderElasticIndexer\Models\Scopes\OrderScopes;
  *
  * @mixin EloquentModel
  */
-class Order extends Model implements OrderInterface
+class Order extends Model // implements OrderInterface
 {
     // Trait for handling attributes
     use OrderAttributes;
@@ -32,7 +32,7 @@ class Order extends Model implements OrderInterface
      *
      * @var string
      */
-    protected $connection = Searcher::ELASTIC_SEARCH;
+    protected $connection = SearcherEngines::ELASTIC_SEARCH;
 
     /**
      * Elasticsearch index name.
