@@ -20,7 +20,7 @@ use Maginium\OrderElasticIndexer\Models\Scopes\OrderScopes;
  *
  * @mixin EloquentModel
  */
-class Order extends Model // implements OrderInterface
+class Order extends Model
 {
     // Trait for handling attributes
     use OrderAttributes;
@@ -39,14 +39,14 @@ class Order extends Model // implements OrderInterface
      *
      * @var string
      */
-    protected $index = self::TABLE_NAME;
+    protected $index = OrderInterface::TABLE_NAME;
 
     /**
      * Primary key for the Order model.
      *
      * @var string
      */
-    protected $primaryKey = self::ID;
+    protected $primaryKey = OrderInterface::ID;
 
     /**
      * The "type" of the primary key ID.

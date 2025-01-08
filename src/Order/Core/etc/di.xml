@@ -41,8 +41,7 @@
 
     <!-- Datasources resolver -->
     <type name="Maginium\Order\Models\Order">
-        <plugin name="order_model_resolver" sortOrder="1" type="Maginium\Order\Models\DataSourceResolver" />
+        <!-- Attach the data source resolver plugin to the Order model -->
+        <plugin name="order_model_resolver" sortOrder="1" type="Maginium\Framework\Database\Datasource\Resolver" />
     </type>
-
-    <virtualType name="Maginium\Order\Models\DataSourceResolver" type="Maginium\Framework\Database\DataSourceResolver" />
 </config>

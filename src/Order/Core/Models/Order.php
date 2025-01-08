@@ -55,4 +55,21 @@ class Order extends BaseOrder implements BaseOrderInterface, OrderInterface, Sea
      * @var string
      */
     public static string $keyType = DataType::INT;
+
+    /**
+     * Get the instance as an array.
+     *
+     * This method delegates to `toArray` to convert the group instance into an array,
+     * optionally including only specific keys.
+     *
+     * @param array $keys Optional array of keys to include in the resulting array.
+     *                    Defaults to all keys ('*') if not specified.
+     *
+     * @return array The model's data as an associative array.
+     */
+    public function toDataArray(array $keys = ['*']): array
+    {
+        // Delegate to the `toArray` method for conversion and key filtering
+        return parent::toArray($keys);
+    }
 }
