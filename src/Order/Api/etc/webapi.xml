@@ -1,0 +1,83 @@
+<?xml version="1.0" ?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <!-- Section: Order List -->
+    <!-- Description: Routes for retrieving lists of orders with optional pagination and search. -->
+
+    <!-- Route for retrieving a list of orders -->
+    <route method="GET" url="/V2/orders">
+        <service class="Maginium\OrderApi\Interfaces\GetListInterface" method="handle" />
+        <resources>
+            <!-- Allow anonymous access to this API endpoint -->
+            <resource ref="anonymous" />
+        </resources>
+    </route>
+
+    <!-- Route for searching orders -->
+    <route method="GET" url="/V2/orders/search/:searchTerm">
+        <service class="Maginium\OrderApi\Interfaces\SearchInterface" method="handle" />
+        <resources>
+            <!-- Allow anonymous access to this API endpoint -->
+            <resource ref="anonymous" />
+        </resources>
+    </route>
+
+    <!-- Section: Order Retrieval -->
+    <!-- Description: Routes for retrieving individual orders by ID or other identifiers. -->
+
+    <!-- Route for retrieving a order by Identifier -->
+    <route method="GET" url="/V2/order/attribute/:id/:value">
+        <service class="Maginium\OrderApi\Interfaces\GetByInterface" method="handle" />
+        <resources>
+            <!-- Allow anonymous access to this API endpoint -->
+            <resource ref="anonymous" />
+        </resources>
+    </route>
+
+    <!-- Route for retrieving a order by ID -->
+    <route method="GET" url="/V2/order/:id">
+        <service class="Maginium\OrderApi\Interfaces\GetByIdInterface" method="handle" />
+        <resources>
+            <!-- Allow anonymous access to this API endpoint -->
+            <resource ref="anonymous" />
+        </resources>
+    </route>
+
+    <!-- Section: Order Modification -->
+    <!-- Description: Routes for creating, updating, upserting, and deleting orders. -->
+
+    <!-- Route for saving a order -->
+    <route method="POST" url="/V2/order">
+        <service class="Maginium\OrderApi\Interfaces\CreateInterface" method="handle" />
+        <resources>
+            <!-- Require admin access for this API endpoint -->
+            <resource ref="anonymous" />
+        </resources>
+    </route>
+
+    <!-- Route for updating a order -->
+    <route method="PUT" url="/V2/order/:id">
+        <service class="Maginium\OrderApi\Interfaces\UpdateInterface" method="handle" />
+        <resources>
+            <!-- Require admin access for this API endpoint -->
+            <resource ref="anonymous" />
+        </resources>
+    </route>
+
+    <!-- Route for upserting a order -->
+    <route method="POST" url="/V2/orders/upsert">
+        <service class="Maginium\OrderApi\Interfaces\UpsertInterface" method="handle" />
+        <resources>
+            <!-- Require admin access for this API endpoint -->
+            <resource ref="anonymous" />
+        </resources>
+    </route>
+
+    <!-- Route for deleting a order -->
+    <route method="DELETE" url="/V2/order/:id">
+        <service class="Maginium\OrderApi\Interfaces\DeleteInterface" method="handle" />
+        <resources>
+            <!-- Require admin access for this API endpoint -->
+            <resource ref="anonymous" />
+        </resources>
+    </route>
+</routes>
