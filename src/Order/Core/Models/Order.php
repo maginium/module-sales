@@ -4,14 +4,16 @@ declare(strict_types=1);
 
 namespace Maginium\Order\Models;
 
-use Magento\Sales\Api\Data\OrderInterface as BaseOrderInterface;
-use Magento\Sales\Model\Order as BaseOrder;
+use Magento\Framework\Model\AbstractExtensibleModel;
+use Magento\Framework\Model\AbstractModel;
+use Magento\Sales\Api\Data\OrderInterface as BaseModelInterface;
 use Maginium\Foundation\Enums\DataType;
-use Maginium\Framework\Database\Concerns\HasEnhancedModel;
+use Maginium\Framework\Database\Eloquent\Model;
 use Maginium\Framework\Database\Interfaces\SearchableInterface;
 use Maginium\Order\Interfaces\Data\OrderInterface;
 use Maginium\Order\Models\Attributes\OrderAttributes;
 use Maginium\Order\Models\Scopes\OrderScopes;
+use Maginium\OrderElasticIndexer\Models\Order as ElasticModel;
 
 /**
  * Class Order.
@@ -24,10 +26,8 @@ use Maginium\Order\Models\Scopes\OrderScopes;
  * @template TKey of array-key
  * @template TValue
  */
-class Order extends BaseOrder implements BaseOrderInterface, OrderInterface, SearchableInterface
+class Order extends Model implements OrderInterface, SearchableInterface
 {
-    // Include additional database handling utilities.
-    use HasEnhancedModel;
     // Trait for handling attributes
     use OrderAttributes;
     // Trait for handling scopes
@@ -38,14 +38,14 @@ class Order extends BaseOrder implements BaseOrderInterface, OrderInterface, Sea
      *
      * @var string|null
      */
-    public static string $table = self::TABLE_NAME;
+    public $table = self::TABLE_NAME;
 
     /**
      * The primary key for the model.
      *
      * @var string
      */
-    public static string $primaryKey = self::ID;
+    public $primaryKey = self::ID;
 
     /**
      * The "type" of the primary key ID.
@@ -54,22 +54,23 @@ class Order extends BaseOrder implements BaseOrderInterface, OrderInterface, Sea
      *
      * @var string
      */
-    public static string $keyType = DataType::INT;
+    public $keyType = DataType::INT;
 
     /**
-     * Get the instance as an array.
+     * The class name of the Elastic model associated with this instance.
      *
-     * This method delegates to `toArray` to convert the group instance into an array,
-     * optionally including only specific keys.
+     * Used for Elasticsearch integration, enabling indexing and querying of model data.
      *
-     * @param array $keys Optional array of keys to include in the resulting array.
-     *                    Defaults to all keys ('*') if not specified.
-     *
-     * @return array The model's data as an associative array.
+     * @var class-string<ElasticModel>|null
      */
-    public function toDataArray(array $keys = ['*']): array
-    {
-        // Delegate to the `toArray` method for conversion and key filtering
-        return parent::toArray($keys);
-    }
+    public ?string $elasticModel = ElasticModel::class;
+
+    /**
+     * The class name of the base model associated with this instance.
+     *
+     * Provides a base configuration model for resource handling or fallback logic.
+     *
+     * @var class-string<AbstractModel>|class-string<AbstractExtensibleModel>|null
+     */
+    protected ?string $baseModel = BaseModelInterface::class;
 }

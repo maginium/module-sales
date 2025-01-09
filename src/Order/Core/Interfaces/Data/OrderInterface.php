@@ -6,8 +6,6 @@ namespace Maginium\Order\Interfaces\Data;
 
 use Maginium\Framework\Database\Interfaces\Data\ModelInterface;
 
-// use Maginium\Framework\Database\Interfaces\HasMetadataInterface;
-
 /**
  * Interface OrderInterface.
  *
@@ -18,7 +16,7 @@ use Maginium\Framework\Database\Interfaces\Data\ModelInterface;
 interface OrderInterface extends ModelInterface
 {
     /**
-     * Entity table_name identifier.
+     * Entity table identifier.
      *
      * This constant represents the name of the table used to store order data.
      * It is used across models, repositories, and other parts of the application to reference the database table.

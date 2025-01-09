@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <!-- Define a preference for the Magento\Sales\Model\Order, specifying the custom Order class implementation. -->
-    <preference for="Magento\Sales\Model\Order" type="Maginium\Order\Models\Order" />
+    <!-- <preference for="Magento\Sales\Model\Order" type="Maginium\Order\Models\Order" /> -->
 
     <!-- Define a preference for the OrderInterface, specifying the custom Order class implementation. -->
     <preference for="Maginium\Order\Interfaces\Data\OrderInterface" type="Maginium\Order\Models\Order" />

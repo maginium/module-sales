@@ -14,7 +14,7 @@ use Maginium\Order\Interfaces\Repositories\OrderRepositoryInterface;
  *
  * This class extends the base `OrderRepository` and implements custom functionality for handling orders.
  */
-class OrderRepository extends Repository implements OrderRepositoryInterface
+class OrderRepository // extends Repository implements OrderRepositoryInterface
 {
     /**
      * StoreRepository constructor.
@@ -26,6 +26,6 @@ class OrderRepository extends Repository implements OrderRepositoryInterface
         ModelFactory $model,
         OrderCollectionFactory $collection,
     ) {
-        parent::__construct($model, $collection);
+        // parent::__construct($model, $collection);
     }
 }
