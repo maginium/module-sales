@@ -8,6 +8,8 @@ use Magento\Framework\Model\AbstractExtensibleModel;
 use Magento\Framework\Model\AbstractModel;
 use Magento\Sales\Api\Data\OrderInterface as BaseModelInterface;
 use Maginium\Foundation\Enums\DataType;
+use Maginium\Framework\Crud\Traits\Filterable;
+use Maginium\Framework\Crud\Traits\Sortable;
 use Maginium\Framework\Database\Eloquent\Model;
 use Maginium\Framework\Database\Interfaces\SearchableInterface;
 use Maginium\Order\Interfaces\Data\OrderInterface;
@@ -28,10 +30,14 @@ use Maginium\OrderElasticIndexer\Models\Order as ElasticModel;
  */
 class Order extends Model implements OrderInterface, SearchableInterface
 {
+    // Trait for handling filters
+    use Filterable;
     // Trait for handling attributes
     use OrderAttributes;
     // Trait for handling scopes
     use OrderScopes;
+    // Trait for handling sorts
+    use Sortable;
 
     /**
      * The table associated with the model.

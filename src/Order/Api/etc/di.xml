@@ -19,8 +19,5 @@
     <preference for="Maginium\OrderApi\Interfaces\UpdateInterface" type="Maginium\OrderApi\Actions\Update" />
 
     <!-- Set preference for OrderServiceInterface to use OrderService implementation -->
-    <preference for="Maginium\OrderApi\Interfaces\UpsertInterface" type="Maginium\OrderApi\Actions\Upsert" />
-
-    <!-- Set preference for OrderServiceInterface to use OrderService implementation -->
     <preference for="Maginium\OrderApi\Interfaces\DeleteInterface" type="Maginium\OrderApi\Actions\DeleteById" />
 </config>

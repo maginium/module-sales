@@ -20,7 +20,7 @@ class OrderRepository extends Repository implements OrderRepositoryInterface
      *
      * @var string
      */
-    protected string $repositoryId = 'order';
+    protected string $repositoryId = 'OrderRepository';
 
     /**
      * OrderRepository constructor.

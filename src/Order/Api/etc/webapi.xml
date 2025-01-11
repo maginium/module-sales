@@ -24,18 +24,18 @@
     <!-- Section: Order Retrieval -->
     <!-- Description: Routes for retrieving individual orders by ID or other identifiers. -->
 
-    <!-- Route for retrieving a order by Identifier -->
-    <route method="GET" url="/V2/order/attribute/:id/:value">
-        <service class="Maginium\OrderApi\Interfaces\GetByInterface" method="handle" />
+    <!-- Route for retrieving a order by ID -->
+    <route method="GET" url="/V2/order/:id">
+        <service class="Maginium\OrderApi\Interfaces\GetByIdInterface" method="handle" />
         <resources>
             <!-- Allow anonymous access to this API endpoint -->
             <resource ref="anonymous" />
         </resources>
     </route>
 
-    <!-- Route for retrieving a order by ID -->
-    <route method="GET" url="/V2/order/:id">
-        <service class="Maginium\OrderApi\Interfaces\GetByIdInterface" method="handle" />
+    <!-- Route for retrieving a order by Identifier -->
+    <route method="GET" url="/V2/order/attribute/:attribute/:code">
+        <service class="Maginium\OrderApi\Interfaces\GetByInterface" method="handle" />
         <resources>
             <!-- Allow anonymous access to this API endpoint -->
             <resource ref="anonymous" />
@@ -57,15 +57,6 @@
     <!-- Route for updating a order -->
     <route method="PUT" url="/V2/order/:id">
         <service class="Maginium\OrderApi\Interfaces\UpdateInterface" method="handle" />
-        <resources>
-            <!-- Require admin access for this API endpoint -->
-            <resource ref="Magento_Sales::sales" />
-        </resources>
-    </route>
-
-    <!-- Route for upserting a order -->
-    <route method="POST" url="/V2/orders/upsert">
-        <service class="Maginium\OrderApi\Interfaces\UpsertInterface" method="handle" />
         <resources>
             <!-- Require admin access for this API endpoint -->
             <resource ref="Magento_Sales::sales" />

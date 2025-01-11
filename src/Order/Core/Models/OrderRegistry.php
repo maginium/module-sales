@@ -54,7 +54,7 @@ class OrderRegistry
     public function get(string|int $orderId): OrderInterface
     {
         /** @var OrderInterface $order */
-        $order = $this->orders->get($orderId, fn() => $this->orderRepository->get($orderId));
+        $order = $this->orders->get($orderId, fn() => $this->orderRepository->find($orderId));
 
         // Lazy load the order order if it is not already registered
         return $order;

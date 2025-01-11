@@ -70,6 +70,17 @@ class Order extends Model implements OrderInterface
     ];
 
     /**
+     * The attributes that should be treated as dates.
+     *
+     * These attributes will be cast to Carbon instances.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        BaseOrderInterface::ENTITY_ID,
+    ];
+
+    /**
      * The attributes that should be cast to specific data types.
      *
      * This ensures that attributes are automatically cast to the correct type when accessed.
@@ -77,9 +88,11 @@ class Order extends Model implements OrderInterface
      * @var array
      */
     protected $casts = [
+        OrderInterface::ID => DataType::INT,
         BaseOrderInterface::WEIGHT => DataType::FLOAT,
         BaseOrderInterface::QUOTE_ID => DataType::INT,
         BaseOrderInterface::STORE_ID => DataType::INT,
+        BaseOrderInterface::ENTITY_ID => DataType::INT,
         BaseOrderInterface::SUBTOTAL => DataType::FLOAT,
         BaseOrderInterface::IS_VIRTUAL => DataType::INT,
         BaseOrderInterface::EMAIL_SENT => DataType::INT,
@@ -107,6 +120,8 @@ class Order extends Model implements OrderInterface
         BaseOrderInterface::BASE_TAX_AMOUNT => DataType::FLOAT,
         BaseOrderInterface::CUSTOMER_GROUP_ID => DataType::INT,
         BaseOrderInterface::CAN_SHIP_PARTIALLY => DataType::INT,
+        'send_email' => DataType::BOOLEAN,
+        'shipping_address_id' => DataType::INT,
         BaseOrderInterface::BILLING_ADDRESS_ID => DataType::INT,
         BaseOrderInterface::BASE_GRAND_TOTAL => DataType::FLOAT,
         BaseOrderInterface::BASE_TAX_CANCELED => DataType::FLOAT,

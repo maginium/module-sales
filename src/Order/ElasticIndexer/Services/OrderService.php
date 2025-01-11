@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace Maginium\OrderElasticIndexer\Services;
 
-use Maginium\Framework\Crud\Service;
-use Maginium\Order\Interfaces\Repositories\OrderRepositoryInterface;
-use Maginium\Order\Interfaces\Services\OrderServiceInterface;
+use Maginium\Framework\Elasticsearch\Eloquent\Service;
+use Maginium\OrderElasticIndexer\Interfaces\Repositories\OrderRepositoryInterface;
+use Maginium\OrderElasticIndexer\Interfaces\Services\OrderServiceInterface;
+use Maginium\OrderElasticIndexer\Repositories\OrderRepository;
 
 /**
  * Class OrderService.
@@ -20,7 +21,7 @@ class OrderService extends Service implements OrderServiceInterface
      *
      * @param OrderRepositoryInterface $orderRepository The order repository interface.
      */
-    public function __construct(OrderRepositoryInterface $orderRepository)
+    public function __construct(OrderRepository $orderRepository)
     {
         parent::__construct($orderRepository);
     }
